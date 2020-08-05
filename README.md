@@ -49,7 +49,7 @@ function pairSum(arr, sum) {
 
 ### Time Complexity: __O(N^2)__
 - In the first loop, `i` runs from `N-2` steps. We can consider `N` interations.
-- In the neasted loop, in the first interation, `j` runs for `N-2` steps. The second time, it's `N-3`. And so on.
+- In the nested loop, in the first interation, `j` runs for `N-2` steps. The second time, it's `N-3`. And so on.
 - Considering both points about, it means the code iterates through each pair of values for `(i,j)` where `j` is bigger than `i`. When N = 6, those are the pairs:
 
 ```js
