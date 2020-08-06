@@ -27,21 +27,22 @@ pairSum([], 1) -> false
 
 ## Approach: __Nested loops__
 
-The easiest way to approach this problem is looping over the given array, fixing an element at position `i` and looping over it again, adding the nested element to the fixed element. If it matches `sum` returns `true`. Otherwise, continue the loop up to the end of the array. If there is no match, return `false`.
+The easiest way to approach this problem is looping over the given array, fixing an element at position `i` and looping over it again, from `i+1` up to element at `N-1` position, adding the fixed element to the current one. If it matches `sum` returns `true`. Otherwise, continue the loop up to the end of the array. If there is no match, return `false`
 
 ## Code
 
 ```js
 function pairSum(arr, sum) {
   for (let i = 0; i < arr.length-1; i++) {
+    const fixed = arr[i]
     for (let j = i+1; j < arr.length; j++) {
-      if (arr[i] + arr[j] === sum) {
+      const current = arr[j]
+      if (fixed + current === sum) {
         return true
       }
     }
   }
   return false
-}
 ```
 ## Performance analysis
 
@@ -57,7 +58,14 @@ function pairSum(arr, sum) {
                   (3,4)
 ```
 
-The size of this matrix is half of a `N-2 x N-2` matrix or `((N-2)ˆ2)/2`. Dropping all constants, we end with a complexity of `N^2`
+The size of this matrix is half of a `N-2 x N-2` matrix or `((N-2)ˆ2)/2`. 
+```
+N = 6
+N-2 x N-2 = (6-2) x (6-2) = (4 x 4 = 16)
+((N-2)^2)/2 = (4^2)/2 = 16/2 = 8
+```
+
+Dropping all constants, we end with a complexity of `N^2`
 
 ### Space Complexity: __O(1)__
 - The memory needed doesn't increase based on the size of the input.
