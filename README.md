@@ -1,7 +1,7 @@
 # Pair Sum
 
 ## Interviewer Prompt
-Given an array `arr` consisting of `N` integers, sorted in ascending order (least to greatest), and a separate number (a `sum`), determine if any 2 numbers in the array add up to the sum. Return `true` if any 2 different numbers within the array add up to sum. Return `false` if no 2 numbers in the array add up to sum.
+Given an array `arr` consisting of `N` integers sorted in ascending order (least to greatest) and a separate number (a `sum`), determine if any 2 different numbers in the array add up to the sum. Return `true` if any 2 different numbers within the array add up to sum. Return `false` if no 2 different numbers in the array add up to sum.
 
 
 ## Examples
@@ -27,17 +27,15 @@ pairSum([], 1) -> false
 
 ## Approach: __Nested loops__
 
-The easiest way to approach this problem is looping over the given array, fixing an element at position `i` and looping over it again, from `i+1` up to element at `N-1` position, adding the fixed element to the current one. If it matches `sum` returns `true`. Otherwise, continue the loop up to the end of the array. If there is no match, return `false`
+The easiest way to approach this problem is looping over the given array, fixing an element at position `i` and looping over it again, adding the nested element to the fixed element. If it matches `sum` returns `true`. Otherwise, continue the loop up to the end of the array. If there is no match, return `false`.
 
 ## Code
 
 ```js
 function pairSum(arr, sum) {
   for (let i = 0; i < arr.length-1; i++) {
-    const fixed = arr[i]
     for (let j = i+1; j < arr.length; j++) {
-      const current = arr[j]
-      if (fixed + current === sum) {
+      if (arr[i] + arr[j] === sum) {
         return true
       }
     }
